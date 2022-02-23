@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Project;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,10 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/projects', 'ProjectController@index');
 
-Route::post('/projects', function () {
-    App\Model\Project::create(request(['title', 'description']));
-});
+Route::post('/projects', 'ProjectController@store');
+Route::post('/', fn () => view('welcome'));
