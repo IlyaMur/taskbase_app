@@ -8,27 +8,18 @@ use App\Models\User;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class ProjectTest extends TestCase
+class ManageProjectTest extends TestCase
 {
     use WithFaker, RefreshDatabase;
 
-    public function test_guests_can_not_an_create_projects()
-    {
-        $attributes = Project::factory()->raw();
-
-        $this->post('/projects', $attributes)->assertRedirect('login');
-    }
-
-    public function test_guests_can_not_view_projects()
-    {
-        $this->get('/projects')->assertRedirect('login');
-    }
-
-    public function test_guests_can_not_view_a_single_project()
+    public function test_guests_can_not_manage_projects()
     {
         $project = Project::factory()->create();
 
+        $this->get('/projects')->assertRedirect('login');
         $this->get($project->path())->assertRedirect('login');
+
+        $this->post('/projects', $project->toArray())->assertRedirect('login');
     }
 
     public function test_a_user_can_create_a_project()
