@@ -20,5 +20,6 @@
         </div>
 
         <button>Create a project</button>
+        <a href="/projects">Cancel</a>
     </form>
 @endsection

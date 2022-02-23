@@ -2,7 +2,9 @@
 
 
 @section('content')
-    <h1>Birdboard</h1>
+    <div class="flex items-center mb-3">
+        <a href="/projects/create">New project</a>
+    </div>
     <ul>
         @forelse ($projects as $project)
             <li>
