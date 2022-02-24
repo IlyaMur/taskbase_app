@@ -26,8 +26,11 @@
         <nav class="bg-white">
             <div class="container mx-auto">
                 <div class="flex justify-between items-center py-2">
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                    <a class="navbar-brand no-underline" href="{{ url('/') }}">
+                        <div class="flex items-center">
+                            <img width="35" src="{{ asset('images/Bookmark_icon.svg') }}" alt="bookmark logo">
+                            <span class="text-xl text-black font-bold">Taskbase</span>
+                        </div>
                     </a>
                     <div>
                         <!-- Right Side Of Navbar -->
@@ -54,7 +57,7 @@
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
-                                                                                                document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                document.getElementById('logout-form').submit();">
                                             {{ __('Logout') }}
                                         </a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST"
