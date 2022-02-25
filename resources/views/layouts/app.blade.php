@@ -28,18 +28,47 @@
                 <div class="flex justify-between items-center py-2">
                     <a class="navbar-brand no-underline" href="{{ url('/') }}">
                         <div class="flex items-center">
-                            <svg class="fill-current text-blue inline-block h-10 w-10" version="1.1" id="Layer_1"
-                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-                                y="0px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
-                                <g id="Layer_1_copy">
+                            <svg width="35" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512"
+                                style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                                <polygon style="fill:#47cdff;"
+                                    points="202.624,478.016 0,291.36 70.512,214.8 191.968,326.656 431.44,33.984 512,99.904 " />
+                                <g>
                                 </g>
-                                <path
-                                    d="M15,5H8C6.9,5,6,5.9,6,7v3h3v11l4-3l4,3V7C17,5.9,16.1,5,15,5z M9,9H7V7c0-0.6,0.4-1,1-1h1V9z" />
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
                             </svg>
 
-                            <div>
-                                <div class="text-xl text-black font-bold">Taskbase</div>
-                                <div class="text-black font-bold" style="font-size: .55rem">Лёгкие
+
+                            <div class="ml-3">
+                                <div class=" text-black font-bold">Taskbase</div>
+                                <div class="text-black font-bold -ml-2" style="font-size: .55rem">Лёгкие
                                     напоминания</div>
                             </div>
                         </div>
@@ -69,7 +98,7 @@
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                            document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                                                                        document.getElementById('logout-form').submit();">
                                             {{ __('Logout') }}
                                         </a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST"

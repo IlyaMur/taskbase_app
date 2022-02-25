@@ -19,7 +19,7 @@
             </div>
         </div>
 
-        <button>Create a project</button>
+        <button class="button">Create a project</button>
         <a href="/projects">Cancel</a>
     </form>
 @endsection

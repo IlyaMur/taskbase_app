@@ -5,10 +5,10 @@
     <header class="flex items-center mb-3 py-4">
         <div class="flex justify-between w-full items-end">
             <p class="text-grey text-sm font-normal">
-                <a href="/projects" class="text-grey text-sm font-normal no-underline">My projects</a>
+                <a href="/projects" class="text-grey text-sm font-normal no-underline">Мои проекты</a>
                 / {{ $project->title }}
             </p>
-            <a href="/projects/create" class="button">New project</a>
+            <a href="/projects/create" class="button">Новый проект</a>
         </div>
     </header>
 
@@ -16,23 +16,33 @@
         <div class="lg:flex -mx-3">
             <div class="lg:w-3/4 px-3 mb-6">
                 <div class="mb-8">
-                    <h2 class="text-lg text-grey font-normal mb-3">Tasks</h2>
+                    <h2 class="text-lg text-grey font-normal mb-3">Задачи</h2>
                     @foreach ($project->tasks as $task)
                         <div class="card mb-3">
-                            {{ $task['body'] }}
+                            <form method="post" action="{{ $task->path() }}">
+                                @method('PATCH')
+                                @csrf
+
+                                <div class="flex items-center">
+                                    <input class="w-full {{ $task->completed ? 'text-grey' : '' }}" type="text"
+                                        name="body" value=" {{ $task['body'] }}">
+                                    <input {{ $task->completed ? 'checked' : '' }} type="checkbox" name="completed"
+                                        onChange="this.form.submit()">
+                                </div>
+                            </form>
                         </div>
                     @endforeach
 
                     <div class="card mb-3">
                         <form action="{{ $project->path() . '/tasks' }}" method="post">
                             @csrf
-                            <input name="body" class="w-full" type="text" placeholder="Begin adding tasks...">
+                            <input name="body" class="w-full" type="text" placeholder="Добавить задачу...">
                         </form>
                     </div>
 
                 </div>
                 <div>
-                    <h2 class="text-lg text-grey font-normal mb-3">General Notes</h2>
+                    <h2 class="text-lg text-grey font-normal mb-3">Заметки</h2>
                     <textarea class="card w-full" style="min-height: 200px">{{ $project->description }}</textarea>
                 </div>
             </div>

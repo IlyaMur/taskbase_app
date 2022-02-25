@@ -4,8 +4,8 @@
 @section('content')
     <header class="flex items-center mb-3 py-4">
         <div class="flex justify-between w-full items-end">
-            <h2 class="text-grey text-sm font-normal">My projects</h2>
-            <a href="/projects/create" class="button">New project</a>
+            <h2 class="text-grey text-sm font-normal">Мои проекты</h2>
+            <a href="/projects/create" class="button">Новый проект</a>
         </div>
     </header>
 
@@ -15,7 +15,7 @@
                 <x-card :project="$project" />
             </div>
         @empty
-            <div>No projects yet</div>
+            <div>Проектов пока нет...</div>
         @endforelse
     </main>
 @endsection
