@@ -26,7 +26,7 @@ class ManageProjectTest extends TestCase
     {
         $this->withoutExceptionHandling();
 
-        $this->actingAs(User::factory()->create());
+        $this->signIn();
 
         $this->get('projects/create')->assertStatus(200);
 
@@ -44,7 +44,7 @@ class ManageProjectTest extends TestCase
 
     public function test_a_project_requires_a_title()
     {
-        $this->actingAs(User::factory()->create());
+        $this->signIn();
 
         $attributes = Project::factory()->raw(['title' => '']);
 
@@ -53,7 +53,7 @@ class ManageProjectTest extends TestCase
 
     public function test_a_project_requires_a_description()
     {
-        $this->actingAs(User::factory()->create());
+        $this->signIn();
 
         $attributes = Project::factory()->raw(['description' => '']);
 
@@ -64,7 +64,7 @@ class ManageProjectTest extends TestCase
     {
         $this->withoutExceptionHandling();
 
-        $this->be(User::factory()->create());
+        $this->signIn();
 
         $project = Project::factory()->create(['owner_id' => auth()->id()]);
 
@@ -78,7 +78,7 @@ class ManageProjectTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $this->be($user);
+        $this->signIn($user);
 
         $project = Project::factory()->create();
 

@@ -37,7 +37,11 @@
                                     d="M15,5H8C6.9,5,6,5.9,6,7v3h3v11l4-3l4,3V7C17,5.9,16.1,5,15,5z M9,9H7V7c0-0.6,0.4-1,1-1h1V9z" />
                             </svg>
 
-                            <span class="text-xl text-black font-bold">Taskbase</span>
+                            <div>
+                                <div class="text-xl text-black font-bold">Taskbase</div>
+                                <div class="text-black font-bold" style="font-size: .55rem">Лёгкие
+                                    напоминания</div>
+                            </div>
                         </div>
                     </a>
                     <div>
@@ -65,7 +69,7 @@
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                    document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                            document.getElementById('logout-form').submit();">
                                             {{ __('Logout') }}
                                         </a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST"
