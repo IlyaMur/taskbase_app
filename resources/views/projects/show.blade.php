@@ -43,7 +43,13 @@
                 </div>
                 <div>
                     <h2 class="text-lg text-grey font-normal mb-3">Заметки</h2>
-                    <textarea class="card w-full" style="min-height: 200px">{{ $project->description }}</textarea>
+                    <form method="POST" action="{{ $project->path() }}">
+                        @csrf
+                        @method('PATCH')
+                        <textarea name="notes" placeholder="Здесь можно оставить заметку..." class="card w-full"
+                            style="min-height: 200px">{{ $project->notes }}</textarea>
+                        <button class="button" type="submit">Сохранить</button>
+                    </form>
                 </div>
             </div>
 

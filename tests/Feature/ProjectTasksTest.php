@@ -88,10 +88,11 @@ class ProjectTasksTest extends TestCase
         $this->signIn();
 
         $project = Project::factory()->create();
+        $projAnother = Project::factory()->create(['owner_id' => auth()->user()->id]);
 
         $task = $project->addTask('test task');
 
-        $this->patch($task->path(), [
+        $this->patch($projAnother->path() . '/tasks/' . $task->id, [
             'body' => 'changed'
         ])->assertStatus(403);
 
