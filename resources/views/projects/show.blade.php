@@ -48,7 +48,7 @@
                         @method('PATCH')
                         <textarea name="notes" placeholder="Здесь можно оставить заметку..." class="card w-full"
                             style="min-height: 200px">{{ $project->notes }}</textarea>
-                        <button class="button" type="submit">Сохранить</button>
+                        <button class="button mt-3" type="submit">Сохранить</button>
                     </form>
                 </div>
             </div>
