@@ -37,7 +37,7 @@ class ProjectController extends Controller
 
     public function create()
     {
-        return view('projects.create');
+        return view('projects.create', ['project' => new Project()]);
     }
 
     public function update(Project $project)
@@ -57,6 +57,8 @@ class ProjectController extends Controller
 
     public function edit(Project $project)
     {
+        $this->authorize('update', $project);
+
         return view('projects.edit', compact('project'));
     }
 }
