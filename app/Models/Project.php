@@ -38,11 +38,10 @@ class Project extends Model
         return $task;
     }
 
-    public function recordActivity($type)
+    public function recordActivity($description)
     {
-        Activity::create([
-            'project_id' => $this->id,
-            'description' => $type
-        ]);
+        $this->activity()->create(
+            compact('description')
+        );
     }
 }
