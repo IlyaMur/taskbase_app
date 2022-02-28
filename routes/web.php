@@ -4,8 +4,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/projects', 'ProjectController@index');
-    Route::get('/', 'ProjectController@index');
+    Route::controller('ProjectController')->group(function () {
+        Route::get('/', 'index');
+        Route::get('/projects', 'index');
+    });
     Route::get('/projects/create', 'ProjectController@create');
     Route::get('/projects/{project}', 'ProjectController@show');
     Route::get('/projects/{project}/edit', 'ProjectController@edit');
