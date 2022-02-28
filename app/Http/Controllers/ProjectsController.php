@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateProjectRequest;
 
-class ProjectController extends Controller
+class ProjectsController extends Controller
 {
     public function index()
     {
@@ -42,8 +43,6 @@ class ProjectController extends Controller
 
     public function update(Project $project)
     {
-        $this->authorize('update', $project);
-
         $attributes = request()->validate([
             'title' => 'sometimes|required',
             'description' => 'sometimes|required',
