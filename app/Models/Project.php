@@ -14,6 +14,13 @@ class Project extends Model
         return $this->hasMany(Activity::class)->latest();
     }
 
+    public function recordActivity($description)
+    {
+        $this->activity()->create(
+            compact('description')
+        );
+    }
+
     protected $guarded = [];
 
     public function path()
@@ -36,12 +43,5 @@ class Project extends Model
         $task = $this->tasks()->create(compact('body'));
 
         return $task;
-    }
-
-    public function recordActivity($description)
-    {
-        $this->activity()->create(
-            compact('description')
-        );
     }
 }
