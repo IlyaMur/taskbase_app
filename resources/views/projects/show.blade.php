@@ -59,9 +59,9 @@
                     </div>
                 @endif
             </div>
-
             <div class="lg:w-1/4 px-3">
                 <x-card :project="$project" />
+                <x-activity-card :project="$project" />
             </div>
         </div>
     </main>
