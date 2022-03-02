@@ -15,7 +15,6 @@ trait RecordsActivity
         ]);
     }
 
-
     public function activityChanges()
     {
         if (!$this->wasChanged()) {

@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Traits\RecordsActivity;
+use Illuminate\Support\Arr;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Task extends Model
 {
-    use HasFactory;
+    use HasFactory, RecordsActivity;
 
     protected $guarded = [];
 
@@ -46,12 +48,17 @@ class Task extends Model
         return $this->morphMany(Activity::class, 'subject')->latest();
     }
 
-    public function recordActivity($description)
+    public function activityChanges()
     {
-        $project_id = $this->project_id;
+        return null;
 
-        $this->activity()->create(
-            compact('description', 'project_id')
-        );
+        if (!$this->wasChanged()) {
+            return null;
+        }
+
+        return [
+            'before' => Arr::except(array_diff($this->old, $this->getAttributes()), 'updated_at'),
+            'after' => Arr::except($this->getChanges(), 'updated_at')
+        ];
     }
 }

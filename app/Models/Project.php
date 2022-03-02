@@ -3,8 +3,8 @@
 namespace App\Models;
 
 use App\Models\Activity;
-use Illuminate\Support\Arr;
 use App\Traits\RecordsActivity;
+use Illuminate\Support\Arr;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
