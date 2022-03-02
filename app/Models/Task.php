@@ -19,6 +19,8 @@ class Task extends Model
         'completed' => 'boolean'
     ];
 
+    public $old = [];
+
     public function complete()
     {
         $this->update(['completed' => true]);
@@ -46,19 +48,5 @@ class Task extends Model
     public function activity()
     {
         return $this->morphMany(Activity::class, 'subject')->latest();
-    }
-
-    public function activityChanges()
-    {
-        return null;
-
-        if (!$this->wasChanged()) {
-            return null;
-        }
-
-        return [
-            'before' => Arr::except(array_diff($this->old, $this->getAttributes()), 'updated_at'),
-            'after' => Arr::except($this->getChanges(), 'updated_at')
-        ];
     }
 }
