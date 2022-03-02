@@ -12,8 +12,6 @@ class Project extends Model
 {
     use HasFactory, RecordsActivity;
 
-    public $old = [];
-
     protected function serializeDate(\DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');

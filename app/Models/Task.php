@@ -19,7 +19,7 @@ class Task extends Model
         'completed' => 'boolean'
     ];
 
-    public $old = [];
+    protected static $recordableEvents = ['created', 'deleted'];
 
     public function complete()
     {
@@ -43,10 +43,5 @@ class Task extends Model
     public function path()
     {
         return '/projects/' . $this->project->id . '/tasks/' . $this->id;
-    }
-
-    public function activity()
-    {
-        return $this->morphMany(Activity::class, 'subject')->latest();
     }
 }
