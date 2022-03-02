@@ -27,13 +27,13 @@ class Project extends Model
     {
         $this->activity()->create([
             'description' => $description,
-            'changes' => $this->activityChanges($description)
+            'changes' => $this->activityChanges()
         ]);
     }
 
-    public function activityChanges($description)
+    public function activityChanges()
     {
-        if ($description !== 'updated') {
+        if (!$this->wasChanged()) {
             return null;
         }
 
