@@ -8,6 +8,7 @@ use App\Models\Project;
 use Facades\Tests\Setup\ProjectFactory;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\Setup\ProjectFactory as SetupProjectFactory;
 
 class ManageProjectTest extends TestCase
 {
@@ -47,6 +48,17 @@ class ManageProjectTest extends TestCase
             ->assertSee($attributes['description'])
             ->assertSee($attributes['notes']);
     }
+
+    /** @test */
+    public function a_user_can_see_all_projects_they_have_been_invited_to_on_their_dashboard()
+    {
+        $user = $this->signIn();
+
+        $project = tap(ProjectFactory::create())->invite($user);
+
+        $this->get("/projects")->assertSee($project->title);
+    }
+
 
     public function test_a_project_requires_a_title()
     {
