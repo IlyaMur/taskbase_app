@@ -8,8 +8,20 @@ use App\Models\Project;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
+use function PHPUnit\Framework\assertTrue;
+
 class ProjectTest extends TestCase
 {
+    /** @test */
+    public function it_can_invite_a_user()
+    {
+        $project = Project::factory()->create();
+
+        $project->invite($user = User::factory()->create());
+
+        $this->assertTrue($project->members->contains($user));
+    }
+
     use WithFaker, RefreshDatabase;
 
     public function test_it_has_a_path()
